@@ -1,0 +1,27 @@
+﻿@model IEnumerable<TinyMceDemo.Models.EF.Question>
+
+@{
+    int i = 1;
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <br />
+        <table class="table table-bordered">
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Action</th>
+            </tr>
+            @foreach (var question in Model)
+            {
+                <tr>
+                    <td>@(i++)</td>
+                    <td>@question.Title</td>
+                    <td><a href="/Home/Edit/@question.ID">Edit</a> | <a href="/Home/Details/@question.ID">Details</a></td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

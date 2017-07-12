@@ -1,0 +1,41 @@
+﻿@model TinyMceDemo.Models.DetailsViewModel
+
+@{
+    int i = 1;
+    ViewBag.Title = "Details";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <br />
+        <table class="table table-bordered">
+            <tr>
+                <td>Title</td>
+                <td>@Model.Title</td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>@Html.Raw(Model.Description)</td>
+            </tr>
+            <tr>
+                <td>Answers</td>
+                <td>
+                    @foreach (var Answer in Model.Answers)
+                    {
+                        if (Answer.IsRight)
+                        {
+                            <span>Ans: @(i++) (Correct) @Html.Raw(Answer.AnswerBody)</span>
+                        }
+                        else
+                        {
+                            <span>Ans: @(i++) @Html.Raw(Answer.AnswerBody)</span>
+                        }
+                        <br />
+                    }
+                </td>
+            </tr>
+        </table>
+        <a class="btn btn-default" href="/Home/Edit/@Model.ID">Edit</a>
+    </div>
+</div>
+
